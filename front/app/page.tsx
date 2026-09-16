@@ -3,16 +3,15 @@ import { About, Banner, Forum, Gallery, Portfolio, Reviews, Servise, Stages, Tec
 export default function Home() {
   return (
     <div>
-      <h1 className="text-[#FFFFFF]">Home page</h1>
       <Banner />
       <WhyFezus />
       <About />
       <Servise />
       <Stages />
-      <Portfolio />
-      <Reviews />
+      {/* <Portfolio /> */}
+      {/* <Reviews /> */}
       <TechnologyStack />
-      <Gallery />
+      {/* <Gallery /> */}
       <Teams />
       <Forum />
     </div>

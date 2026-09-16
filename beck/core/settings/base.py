@@ -18,10 +18,11 @@ else:
 
 
 MY_APPS = [
-    'landing',
+    'apps.landing',
 ]
 
 DJANGO_APPS = [
+    'jazzmin',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -33,6 +34,7 @@ DJANGO_APPS = [
 LIBRARY_APPS = [
     'rest_framework',
     "corsheaders",
+    'drf_yasg',
 ]
 
 INSTALLED_APPS = [
@@ -59,7 +61,7 @@ ROOT_URLCONF = 'core.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -117,6 +119,7 @@ MEDIA_ROOT = BASE_DIR / 'back_media/'
 
 STATIC_URL = '/back_static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'back_static')
+STATICFILES_DIRS = [BASE_DIR / 'static']
 
 
 STORAGES = {
@@ -128,3 +131,47 @@ STORAGES = {
     },
 }
 
+
+CORS_ALLOW_ALL_ORIGINS = True
+
+JAZZMIN_SETTINGS = {
+    "site_title": "Fezus Admin",
+    "site_header": "Fezus",
+    "site_brand": "Fezus Studio",
+    "welcome_sign": "Добро пожаловать в панель управления Fezus",
+    "copyright": "Fezus Studio",
+    "search_model": ["landing.ForumFezus", "auth.User"],
+    "show_ui_builder": False,
+    "topmenu_links": [
+        {"name": "Главная", "url": "admin:index", "permissions": ["auth.view_user"]},
+    ],
+    "icons": {
+        "auth": "fas fa-users-cog",
+        "auth.user": "fas fa-user",
+        "auth.Group": "fas fa-users",
+        "landing.Banner": "fas fa-image",
+        "landing.ForumFezus": "fas fa-envelope-open-text",
+        "landing.TeamsFezus": "fas fa-user-friends",
+        "landing.MetaTags": "fas fa-hashtag",
+        "landing.AboutFezus": "fas fa-info-circle",
+        "landing.WhyFezus": "fas fa-star",
+        "landing.TechnologyStackFezus": "fas fa-laptop-code",
+        "landing.ServicesFezus": "fas fa-briefcase",
+        "landing.HeaderFooter": "fas fa-heading",
+        "landing.StagesFezus": "fas fa-list-ol",
+    },
+    "default_icon_parents": "fas fa-chevron-circle-right",
+    "default_icon_children": "fas fa-circle",
+    "related_modal_active": False,
+    "custom_css": "css/admin_custom.css",
+    "show_sidebar": True,
+    "navigation_expanded": True,
+}
+
+JAZZMIN_UI_TWEAKS = {
+    "theme": "darkly",
+    "body_small_text": False,
+    "navbar_small_text": False,
+    "footer_small_text": False,
+    "sidebar_nav_small_text": False,
+}
